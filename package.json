@@ -1,0 +1,29 @@
+{
+    "name": "nodebb-plugin-magic-button",
+    "version": "1.0.0",
+    "description": "This plugin adds a three button feature: spoiler, blurred text, table.",
+    "main": "library.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ferumdev/nodebb-plugin-magic-button"
+    },
+    "keywords": [
+        "nodebb",
+        "spoiler",
+		"blur",
+        "table",
+        "markdown"
+    ],
+    "author": {
+        "name": "Open Source",
+        "email": "example@example.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ferumdev/nodebb-plugin-magic-button/issues"
+    },
+	"readmeFilename": "README.md",
+    "nbbpm": {
+        "compatibility": "^3.0.0"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "spoiler_title": "название",
+	"spoiler_text": "текст",
+	"blur": "текст",
+	"table": "таблица",
+    "composer.formatting.spoiler": "Спойлер",
+	"composer.formatting.blur": "Размытие",
+	"composer.formatting.table": "Таблица"
+}

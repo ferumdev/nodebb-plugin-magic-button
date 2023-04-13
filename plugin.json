@@ -1,0 +1,18 @@
+{
+    "id": "nodebb-plugin-magic-button",
+    "url": "https://github.com/ferumdev/nodebb-plugin-magic-button",
+    "library": "./library.js",
+    "css": [
+        "static/style.css"
+    ],
+    "hooks": [
+        { "hook": "filter:parse.post", "method": "parsePost"},
+        { "hook": "filter:parse.raw", "method": "parseRaw"},
+        { "hook": "filter:composer.formatting", "method": "registerFormatting"},
+        { "hook": "filter:sanitize.config", "method": "sanitizerConfig"}
+    ],
+    "scripts": [
+        "static/src/client.js"
+    ],
+    "languages": "languages"
+}

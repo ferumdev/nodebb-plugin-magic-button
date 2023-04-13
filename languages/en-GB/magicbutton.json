@@ -1,0 +1,9 @@
+{
+	"spoiler_title": "title",
+	"spoiler_text": "text",
+	"blur": "text",
+	"table": "table",
+    "composer.formatting.spoiler": "Spoiler",
+	"composer.formatting.blur": "Blur",
+	"composer.formatting.table": "Table"
+}
