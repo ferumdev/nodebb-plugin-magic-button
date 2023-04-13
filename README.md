@@ -3,6 +3,7 @@ This plugin adds a three button feature: spoiler, blurred text, table.
 
 NodeBB v3.x.x
 
+![preview](https://i.imgur.com/4KyuQHB.png)
 
 💙 **Thanks**
 
