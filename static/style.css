@@ -20,6 +20,6 @@ span.blur-text {
 
 span.blur-text:hover {
     filter: none;
-    box-shadow: none;
-    text-shadow: none;
+    box-shadow: 0 0 0 0;
+    text-shadow: 0 0 transparent;
 }
