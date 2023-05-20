@@ -12,7 +12,7 @@ const MagicButton = {
     // post
     async parsePost(data) {
         if (data && data.postData && data.postData.content) {
-			data.postData.content = applyMagicButton(data.postData.content);
+			data.postData.content = applyBlur(data.postData.content);
             data.postData.content = await applySpoiler(data.postData.content, data.postData.pid);
         }
         return data;
@@ -21,7 +21,7 @@ const MagicButton = {
     // direct preview in editor
     parseRaw(data, callback) {
         if (data) {
-			data = applyMagicButton(data);
+			data = applyBlur(data);
             data = applySpoiler(data, "");
         }
         callback(null, data);
@@ -43,7 +43,7 @@ const MagicButton = {
     }
 };
 
-function applyMagicButton(textContent) {
+function applyBlur(textContent) {
     if (textContent.match(blurRegex)) {
         textContent = textContent.replace(blurRegex, function (match, text) {
             return `<span class="blur-text">${text}</span>`;
