@@ -5,8 +5,6 @@
 $(document).ready(function () {
     var MagicButton = {};
 
-
-
     $(window).on('action:composer.enhanced', function (evt, data) {
         MagicButton.prepareFormattingTools();
     });
@@ -18,34 +16,26 @@ $(document).ready(function () {
             translator.getTranslations(window.config.userLang || window.config.defaultLang, 'magicbutton', function (strings) {
                 
 				formatting.addButtonDispatch('table', function (textarea) {
-                    
                         controls.insertIntoTextarea(textarea, "\n| Syntax | Description | \n| --- | --- | \n| Header | Title | \n| Paragraph | Text | \n\n\n");
-                        controls.updateTextareaSelection(textarea);
-                    
                 });
 				
-				formatting.addButtonDispatch('blur', function (textarea, selectionStart, selectionEnd) {
-                    if (selectionStart === selectionEnd) {
-                        controls.insertIntoTextarea(textarea, "=" + strings.blur + "=");
-                        controls.updateTextareaSelection(textarea, selectionStart + 1, selectionStart + 1 + strings.blur.length);
-                    } else {
-                        controls.wrapSelectionInTextareaWith(textarea, "=", "=");
-                        controls.updateTextareaSelection(textarea, selectionStart + 1, selectionEnd + 1);
-                    }
+				formatting.addButtonDispatch('blur', function (textarea) {
+                        controls.insertIntoTextarea(textarea, "[blur]" + strings.blur + "[/blur]");
                 });
 				
-                formatting.addButtonDispatch('spoiler', function (textearea, selectionStart, selectionEnd) {
-                    if (selectionStart === selectionEnd) {
+				formatting.addButtonDispatch('color', function (textarea) {
+                        controls.insertIntoTextarea(textarea, "[color=blue]" + strings.color + "[/color]");
+                });
+				
+				formatting.addButtonDispatch('imgsize', function (textarea) {
+                        controls.insertIntoTextarea(textarea, "[image=100px]" + "+" + strings.imgsize + "+");
+                });
+				
+                formatting.addButtonDispatch('spoiler', function (textearea) {
                         controls.insertIntoTextarea(textearea, "|| " + strings.spoiler_title + " || " + strings.spoiler_text + " ||");
-                        controls.updateTextareaSelection(textearea, selectionStart + 2, selectionStart + 2 + strings.spoiler_text.length);
-                    } else {
-                        controls.wrapSelectionInTextareaWith(textearea, "||", "||", "||");
-                        controls.updateTextareaSelection(textearea, selectionStart + 2, selectionEnd + 2);
-                    }
                 });
             });
         }
     };
-
     
 });

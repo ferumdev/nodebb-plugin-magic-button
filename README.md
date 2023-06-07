@@ -1,9 +1,11 @@
 ### Magic Button
-This plugin adds a three button feature: spoiler, blurred text, table.
+This plugin adds a five button with feature: spoiler, blurred text, colorful text, resize images, table.
 
 NodeBB v3.x.x
 
-![preview](https://i.imgur.com/4KyuQHB.png)
+![before](https://i.imgur.com/ZARO9v3.png)
+
+![after](https://i.imgur.com/USvmzR1.png)
 
 💙 **Thanks**
 

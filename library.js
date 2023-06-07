@@ -3,16 +3,18 @@
 const slugify = require.main.require('./src/slugify');
 const crypto = require('crypto');
 
-const blurRegex = /(?:<p dir="auto">)(?:\=)([^]*?)(?:\=)(?:<\/p>)/g;
+const blurRegex = /\[blur\](.+?)\[\/blur\]/g;
+const colorRegex = /\[color=(.+?)\](.+?)\[\/color\]/g;
+const imgsizeRegex = /\[image=([0-9]+)px\](?:\+)(.+?)(\+)/g;
 const spoilerRegex = /(?:<p dir="auto">)(?:\|\|)([^]*?)(?:\|\|)([^]*?)(?:\|\|)(?:<\/p>)/g;
-
-
 
 const MagicButton = {
     // post
     async parsePost(data) {
         if (data && data.postData && data.postData.content) {
 			data.postData.content = applyBlur(data.postData.content);
+			data.postData.content = applyColor(data.postData.content);
+			data.postData.content = applyImgsize(data.postData.content);
             data.postData.content = await applySpoiler(data.postData.content, data.postData.pid);
         }
         return data;
@@ -22,6 +24,8 @@ const MagicButton = {
     parseRaw(data, callback) {
         if (data) {
 			data = applyBlur(data);
+			data = applyColor(data);
+			data = applyImgsize(data);
             data = applySpoiler(data, "");
         }
         callback(null, data);
@@ -30,6 +34,8 @@ const MagicButton = {
         const formatting = [
             { name: "spoiler", className: "fa fa-square-caret-right", title: "[[magicbutton:composer.formatting.spoiler]]" },
 			{ name: "blur", className: "fa fa-wand-magic-sparkles", title: "[[magicbutton:composer.formatting.blur]]" },
+			{ name: "color", className: "fa fa-palette", title: "[[magicbutton:composer.formatting.color]]" },
+			{ name: "imgsize", className: "fa fa-images", title: "[[magicbutton:composer.formatting.imgsize]]" },
 			{ name: "table", className: "fa fa-table", title: "[[magicbutton:composer.formatting.table]]" },
         ];
 
@@ -47,6 +53,26 @@ function applyBlur(textContent) {
     if (textContent.match(blurRegex)) {
         textContent = textContent.replace(blurRegex, function (match, text) {
             return `<span class="blur-text">${text}</span>`;
+        });
+    }
+
+    return textContent;
+}
+
+function applyColor(textContent) {
+    if (textContent.match(colorRegex)) {
+        textContent = textContent.replace(colorRegex, function (match, color, text) {
+            return `<span style="color:${color};">${text}</span>`;
+        });
+    }
+
+    return textContent;
+}
+
+function applyImgsize(textContent) {
+    if (textContent.match(imgsizeRegex)) {
+        textContent = textContent.replace(imgsizeRegex, function (match, title, text) {
+            return `<img src="${text}" style="width:${title}px">`;
         });
     }
 

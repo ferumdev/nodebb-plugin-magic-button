@@ -1,4 +1,4 @@
-/* Magic Button */
+/* Magic Button CSS */
 
 /* Spoiler */
 [aria-expanded="true"] .fa-caret-right.spoiler-button::before {
@@ -11,7 +11,6 @@
 }
 
 /* Blur */
-
 span.blur-text {
     filter: blur(5px);
     text-shadow: 5px 0px;
@@ -20,4 +19,5 @@ span.blur-text {
 span.blur-text:hover {
     filter: none;
     text-shadow: 0 0 transparent;
+	cursor: pointer;
 }

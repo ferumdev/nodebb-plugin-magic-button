@@ -1,9 +1,13 @@
 {
     "spoiler_title": "название",
 	"spoiler_text": "текст",
+	"color": "текст",
+	"imgsize": "https://image.jpg",
 	"blur": "текст",
 	"table": "таблица",
     "composer.formatting.spoiler": "Спойлер",
+	"composer.formatting.color": "Цвет текста",
+	"composer.formatting.imgsize": "Размер изображения",
 	"composer.formatting.blur": "Размытие",
 	"composer.formatting.table": "Таблица"
 }

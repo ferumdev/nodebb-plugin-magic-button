@@ -1,9 +1,13 @@
 {
 	"spoiler_title": "title",
 	"spoiler_text": "text",
+	"color": "text",
+	"imgsize": "https://image.jpg",
 	"blur": "text",
 	"table": "table",
     "composer.formatting.spoiler": "Spoiler",
+	"composer.formatting.color": "Color text",
+	"composer.formatting.imgsize": "Image Resize",
 	"composer.formatting.blur": "Blur",
 	"composer.formatting.table": "Table"
 }
