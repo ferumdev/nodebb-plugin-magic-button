@@ -3,6 +3,7 @@
 const slugify = require.main.require('./src/slugify');
 const crypto = require('crypto');
 
+const btnRegex = /\[btn=(.+?)=(.+?)\](.+?)\[\/btn\]/g;
 const blurRegex = /\[blur\](.+?)\[\/blur\]/g;
 const colorRegex = /\[color=(.+?)\](.+?)\[\/color\]/g;
 const imgsizeRegex = /\[image=([0-9]+)px\](?:\+)(.+?)(\+)/g;
@@ -12,6 +13,7 @@ const MagicButton = {
     // post
     async parsePost(data) {
         if (data && data.postData && data.postData.content) {
+			data.postData.content = applyBtn(data.postData.content);
 			data.postData.content = applyBlur(data.postData.content);
 			data.postData.content = applyColor(data.postData.content);
 			data.postData.content = applyImgsize(data.postData.content);
@@ -23,6 +25,7 @@ const MagicButton = {
     // direct preview in editor
     parseRaw(data, callback) {
         if (data) {
+			data = applyBtn(data);
 			data = applyBlur(data);
 			data = applyColor(data);
 			data = applyImgsize(data);
@@ -48,6 +51,16 @@ const MagicButton = {
         return config;
     }
 };
+
+function applyBtn(textContent) {
+    if (textContent.match(btnRegex)) {
+        textContent = textContent.replace(btnRegex, function (match, url, text, title) {
+            return `<a class="btn btn-sm btn-light border-0 shadow-none mt-1 mb-1 me-2 fw-semibold" name="${title}" href="${url}" role="button"><i class="${text}"></i> ${title}</a>`;
+        });
+    }
+
+    return textContent;
+}
 
 function applyBlur(textContent) {
     if (textContent.match(blurRegex)) {

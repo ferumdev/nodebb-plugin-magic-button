@@ -1,7 +1,7 @@
 {
     "name": "nodebb-plugin-magic-button",
-    "version": "1.0.3",
-    "description": "This plugin adds a five button with feature: spoiler, blurred text, colorful text, resize images, table.",
+    "version": "1.0.4",
+    "description": "This plugin adds a five button with feature: spoiler, blurred text, colorful text, resize images, table, custom buttons.",
     "main": "library.js",
     "repository": {
         "type": "git",
@@ -14,7 +14,8 @@
 		"color",
 		"image resize",
         "table",
-        "markdown"
+        "markdown",
+		"custom buttons"
     ],
     "author": {
         "name": "Open Source",
